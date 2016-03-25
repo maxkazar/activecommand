@@ -1,3 +1,5 @@
+require 'rubygems'
+
 require 'active_support/all'
 require 'active_command/version'
 require 'active_command/configuration'
