@@ -31,7 +31,8 @@ module ActiveCommand
 
     def initialize(invoker, context = {})
       @invoker = invoker
-      @context = context.deep_symbolize_keys
+      # Should only symbolize key for
+      @context = ActiveSupport::HashWithIndifferentAccess.new context
       @options = @context[:options] || {}
     end
 

@@ -29,6 +29,7 @@ module ActiveCommand
         name.each { |name| command name, options: options }
       else
         command name, chain: chain[1..-1], options: options
+        # command name, chain: chain[1..-1], options: options
       end
     end
   end

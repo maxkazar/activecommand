@@ -1,7 +1,7 @@
 module ActiveCommand
   module Commandable
-    def command(name, options = {})
-      Backends.enqueue name, invoker, options: options
+    def command(name, context = {})
+      Backends.enqueue name, invoker, @context.merge(context)
     end
 
     def backend
