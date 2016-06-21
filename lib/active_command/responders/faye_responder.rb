@@ -63,9 +63,9 @@ module ActiveCommand
         return { base: model.message } if model.is_a? CommandError
 
         if model.errors.empty?
-          ActiveModel::SerializableResource.new(model, options).serializable_hash
+          ActiveModelSerializers::SerializableResource.new(model, options).serializable_hash
         else
-          ActiveModel::SerializableResource.new(model.errors, options.merge(root: 'errors')).serializable_hash[:errors]
+          ActiveModelSerializers::SerializableResource.new(model.errors, options.merge(root: 'errors')).serializable_hash[:errors]
         end
       end
 
