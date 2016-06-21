@@ -11,7 +11,7 @@ module ActiveCommand
         end
 
         def queue_name(command_name)
-          command_name[/^(.*)\/[^\/]*$/, 1].underscore
+          command_name[/^(.*)\/[^\/]*$/, 1].underscore.gsub(/\//, '_')
         end
 
         def queue(command_name)
