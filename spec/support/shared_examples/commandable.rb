@@ -6,7 +6,7 @@ RSpec.shared_examples 'active_command/commandable' do
     it 'enqueue command' do
       expect(ActiveCommand::Backends)
         .to receive(:enqueue)
-        .with(name, subject.invoker, options: options)
+        .with(name, subject.invoker, options)
 
       subject.command name, options
     end

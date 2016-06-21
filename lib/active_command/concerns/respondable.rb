@@ -15,7 +15,7 @@ module ActiveCommand
     rescue Interrupt
       raise
     rescue CommandError
-      respond_with error: $ERROR_INFO
+      respond_with $ERROR_INFO
     end
   end
 end
