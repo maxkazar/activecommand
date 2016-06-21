@@ -19,7 +19,7 @@ module ActiveCommand
     end
 
     def measurer
-      return if defined? @measurer
+      return @measurer if defined? @measurer
 
       measurer_name = ActiveCommand.configuration.measurer
       @measurer = measurer_name && measurer_name.to_s.classify.constantize
