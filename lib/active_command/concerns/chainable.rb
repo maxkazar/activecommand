@@ -24,12 +24,11 @@ module ActiveCommand
     def execute_chain(options = nil)
       return unless chain.present?
 
-      name = chain.first
+      name = chain.shift
       if name.is_a? Array
-        name.each { |name| command name, options: options }
+        name.each { |name| command name, options }
       else
-        command name, chain: chain[1..-1], options: options
-        # command name, chain: chain[1..-1], options: options
+        command name, options, chain: chain
       end
     end
   end

@@ -68,7 +68,7 @@ RSpec.shared_examples 'active_command/chainable' do
       it 'execute first command with the rest of chain' do
         expect(subject)
           .to receive(:command)
-          .with chain.first, chain: rest_chain, options: options
+          .with chain.first, options, chain: rest_chain
 
         subject.send :execute_chain, options
       end

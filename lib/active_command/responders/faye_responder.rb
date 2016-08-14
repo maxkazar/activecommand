@@ -62,7 +62,7 @@ module ActiveCommand
       def serialize(model, options = {})
         return { base: model.message } if model.is_a? CommandError
 
-        if model.errors.empty?
+        if model.is_a?(Array) || model.errors.empty?
           ActiveModelSerializers::SerializableResource.new(model, options).serializable_hash
         else
           ActiveModelSerializers::SerializableResource.new(model.errors, options.merge(root: 'errors')).serializable_hash[:errors]
@@ -70,7 +70,7 @@ module ActiveCommand
       end
 
       def status(model)
-        model.is_a?(CommandError) || !model.valid? ? :failure : :success
+        model.is_a?(Array) || !model.is_a?(CommandError) && model.valid? ? :success : :failure
       end
 
       # @return Faye request header
